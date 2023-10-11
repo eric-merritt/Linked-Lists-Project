@@ -73,7 +73,8 @@ const LinkedList = function (head = null) {
     contains: function (value) {
       let node = this.head;
       while ( node ){
-        if ( node.value.toLowerCase() === value.toLowerCase()){
+        if ( node.value.toLowerCase() === 
+        value.toLowerCase()){
           return true;
         }
         node = node.next;
@@ -120,32 +121,48 @@ const LinkedList = function (head = null) {
 };
 };
 
+const container = document.getElementById('container');
 
-const employeeList = LinkedList();
-employeeList.append('John');
+const headerDiv = document.createElement('div');
+headerDiv.className = 'header-div';
+const header = document.createElement('h1');
+header.className = 'header';
 
-employeeList.head = Node('John');
-console.log(employeeList.head);
+const description = document.createElement('p');
+description.textContent = 'Welcome to the Linked List Project: Check out the below functions and more in the developer tools console.';
 
-employeeList.prepend('Jane');
-console.log(employeeList.head);
 
-employeeList.append('Bob');
-console.log(employeeList.tail());
+header.textContent = 'Linked List Project';
+headerDiv.appendChild(header);
+headerDiv.appendChild(description)
 
-console.log(employeeList.size());
-console.log(employeeList.find('Jane'));
-console.log(employeeList.at(0));
-console.log(employeeList.contains('bob'));
-console.log(employeeList.toString());
-employeeList.pop();
-console.log(employeeList.toString())
+container.appendChild(headerDiv);
 
-employeeList.insertAt(1,'Blaire');
-employeeList.insertAt(3,'Bob')
-console.log(employeeList.toString());
+Object.fromEntries(Object.entries(LinkedList()).forEach(([key, value]) => {
+  if (value !== null){
+  const methodDisplay = document.createElement('div');
+  methodDisplay.classList.add('method-display');
+  const methodDisplayTitle = document.createElement('h3');
+  methodDisplayTitle.innerText = key;
+  methodDisplay.appendChild(methodDisplayTitle);
+  const methodDisplayDescription = document.createElement('p');
+  methodDisplayDescription.innerText = value;
+  methodDisplay.appendChild(methodDisplayDescription);
+  container.appendChild(methodDisplay);
+  }
+  
 
-employeeList.insertAt(5,'Tiffany');
+  
+}));
+
+const newWindowAlert = () => alert();
+
+newWindowAlert();
+
+
+
+
+
 
 
 
